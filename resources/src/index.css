@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* Focus outline */
+:focus {
+  outline: 3px solid rgba(6, 182, 212, 0.55);
+  outline-offset: 2px;
+}
+
+/* Base body */
+body {
+  @apply bg-slate-100 text-slate-900 antialiased;
+}
+
+/* ==== LAYOUT SHELL (DESKTOP) ==== */
+
+/* The outer app wrapper you already have */
+.dashboard-shell {
+  @apply max-w-[1440] mx-auto flex min-h-screen;
+}
+
+/* Left sidebar */
+.sidebar {
+  @apply w-[240] bg-white border-r border-slate-200 py-6 hidden md:flex flex-col gap-2;
+}
+
+/* Sidebar link item (you already use .sidebar-link) */
+.sidebar-link {
+  @apply flex items-center gap-3 px-5 py-2.5 text-sm text-slate-700
+         rounded-xl hover:bg-slate-100 transition-colors;
+}
+
+/* Active sidebar item; add this class in JSX where item is active */
+.sidebar-link-active {
+  @apply bg-indigo-100 text-slate-900;
+}
+
+/* Icon bullet in sidebar */
+.sidebar-dot {
+  @apply w-3 h-3 rounded-full bg-slate-200;
+}
+
+/* Right content area */
+.main-content {
+  @apply flex-1 px-8 py-6 space-y-6;
+}
+
+/* ==== TOP APP BAR ==== */
+
+.topbar {
+  @apply w-full h-[72] bg-white rounded-2xl shadow-md
+         flex items-center justify-between px-6;
+}
+
+/* Left cluster (logo + text) */
+.topbar-left {
+  @apply flex items-center gap-3;
+}
+
+.topbar-logo-circle {
+  @apply w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center;
+}
+
+.topbar-title {
+  @apply text-[18px] font-semibold text-slate-900;
+}
+
+.topbar-subtitle {
+  @apply text-[12px] text-slate-500;
+}
+
+/* Center search */
+.topbar-search {
+  @apply flex-1 mx-8;
+}
+
+.search-input {
+  @apply w-full h-10 rounded-full bg-slate-100 px-4 text-sm text-slate-500
+         border-0 outline-none;
+}
+
+/* Right filter pills */
+.topbar-right {
+  @apply flex items-center gap-3;
+}
+
+.filter-pill {
+  @apply inline-flex items-center gap-1.5 h-9 px-4 rounded-full
+         border border-slate-200 bg-white text-[13px] text-slate-700;
+}
+
+/* ==== COMMAND CENTER SECTION ==== */
+
+.section-title {
+  @apply text-[20px] font-semibold text-slate-900;
+}
+
+.section-subtitle {
+  @apply text-[13px] text-slate-500;
+}
+
+/* KPI card row container */
+.kpi-row {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-5;
+}
+
+/* KPI card (Patients, Inventory, etc.) */
+.kpi-card {
+  @apply bg-white rounded-2xl shadow-md px-5 py-4;
+}
+
+/* ==== PATIENTS OVERVIEW CARD ==== */
+
+.patients-overview-card {
+  @apply bg-white rounded-2xl shadow-md px-5 py-4 mt-4;
+}
+
+/* inner chart container if you have one */
+.chart-box {
+  @apply mt-3 border border-slate-200 rounded-xl px-4 py-4 bg-white;
+}
+
+/* ==== ACTION TRACKER TABLE ==== */
+
+.action-card {
+  @apply bg-white rounded-2xl shadow-md mt-6 overflow-hidden;
+}
+
+.action-header-row {
+  @apply bg-slate-50 text-xs text-slate-500;
+}
+
+.table-cell {
+  @apply px-4 py-3 text-sm border-b border-slate-200;
+}
+
+/* Approve / Mark done buttons (reuse your existing classes) */
+.btn-primary {
+  @apply px-3 py-1.5 rounded-full bg-sky-600 text-white text-xs hover:bg-sky-700;
+}
+
+.btn-success {
+  @apply px-3 py-1.5 rounded-full bg-emerald-500 text-white text-xs hover:bg-emerald-600;
+}
+
+/* ==== MOBILE OVERRIDES ==== */
+
+@media (max-width: 768px) {
+  .dashboard-shell {
+    @apply max-w-none flex-col bg-slate-900;
+  }
+
+  .sidebar {
+    @apply hidden;
+  }
+
+  .main-content {
+    @apply px-4 py-4 space-y-4 bg-slate-100;
+  }
+
+  .topbar {
+    @apply mx-4 mt-4 rounded-2xl;
+  }
+
+  .kpi-row {
+    @apply grid-cols-1;
+  }
+}
